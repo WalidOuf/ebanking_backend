@@ -1,5 +1,6 @@
 package com.example.ebankingbackend;
 
+import com.example.ebankingbackend.dtos.CustomerDTO;
 import com.example.ebankingbackend.entities.*;
 import com.example.ebankingbackend.enums.AccountStatus;
 import com.example.ebankingbackend.enums.OperationType;
@@ -10,6 +11,7 @@ import com.example.ebankingbackend.repositories.AccountOperationRepository;
 import com.example.ebankingbackend.repositories.BankAccountRepository;
 import com.example.ebankingbackend.repositories.CustomerRepository;
 import com.example.ebankingbackend.services.BankAccountService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +23,7 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 @SpringBootApplication
+@OpenAPIDefinition
 public class EbankingBackendApplication {
 
     public static void main(String[] args) {
@@ -30,7 +33,7 @@ public class EbankingBackendApplication {
     CommandLineRunner commandLineRunner(BankAccountService bankAccountService){
         return args -> {
             Stream.of("Hamid","Abdslam","Hanane").forEach(name->{
-                Customer customer=new Customer();
+                CustomerDTO customer=new CustomerDTO();
                 customer.setName(name);
                 customer.setEmail(name+"@gmail.com");
                 bankAccountService.saveCustomer(customer);
@@ -93,7 +96,7 @@ public class EbankingBackendApplication {
                 savingAccount.setCreatedAt(new Date());
                 savingAccount.setStatus(AccountStatus.CREATED);
                 savingAccount.setCustomer(customer);
-                savingAccount.setIntrestRate(5.5);
+                savingAccount.setInterestRate(5.5);
                 bankAccountRepository.save(savingAccount);
             });
             bankAccountRepository.findAll().forEach(bankAcc -> {

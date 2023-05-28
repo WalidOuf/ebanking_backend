@@ -1,7 +1,9 @@
 package com.example.ebankingbackend.mappers;
 
 import com.example.ebankingbackend.dtos.CustomerDTO;
+import com.example.ebankingbackend.dtos.SavingBankAccountDTO;
 import com.example.ebankingbackend.entities.Customer;
+import com.example.ebankingbackend.entities.SavingAccount;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,16 @@ public class BankAccountMapperImpl {
         BeanUtils.copyProperties(customer,customerDTO);
         return customerDTO;
     }
-    public Customer fromCustomerDTO(Customer customerDTO){
+    public Customer fromCustomerDTO(CustomerDTO customerDTO){
         Customer customer=new Customer();
         BeanUtils.copyProperties(customerDTO,customer);
         return customer;
     }
+    public SavingBankAccountDTO fromSavingBankAccount(SavingAccount savingAccount){
+
+    }
+    public SavingAccount fromSavingBankAccountDTO(SavingBankAccountDTO savingAccountDTO){
+
+    }
+
 }
