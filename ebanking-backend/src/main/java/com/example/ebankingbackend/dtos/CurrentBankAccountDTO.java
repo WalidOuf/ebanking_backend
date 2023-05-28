@@ -1,5 +1,6 @@
 package com.example.ebankingbackend.dtos;
 
+import com.example.ebankingbackend.entities.BankAccount;
 import com.example.ebankingbackend.enums.AccountStatus;
 import lombok.Data;
 
@@ -7,7 +8,7 @@ import java.util.Date;
 
 
 @Data
-public class CurrentBankAccountDTO {
+public class CurrentBankAccountDTO extends BankAccountDTO {
 
     private String id;
     private double balance;
